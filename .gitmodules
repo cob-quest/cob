@@ -25,3 +25,30 @@
 [submodule "terraform"]
 	path = terraform
 	url = git@gitlab.com:cs302-2023/g3-team8/project/terraform.git
+[submodule "k8s/assignment-charts"]
+	path = k8s/assignment-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/assignment-charts.git
+[submodule "k8s/challenge-charts"]
+	path = k8s/challenge-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/challenge-charts.git
+[submodule "k8s/mongodb-charts"]
+	path = k8s/mongodb-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/mongodb-charts.git
+[submodule "k8s/platform-api-charts"]
+	path = k8s/platform-api-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/platform-api-charts.git
+[submodule "k8s/platform-frontend-charts"]
+	path = k8s/platform-frontend-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/platform-frontend-charts.git
+[submodule "k8s/process-engine-charts"]
+	path = k8s/process-engine-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/process-engine-charts.git
+[submodule "k8s/rabbitmq-charts"]
+	path = k8s/rabbitmq-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/rabbitmq-charts.git
+[submodule "k8s/traefik-charts"]
+	path = k8s/traefik-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/traefik-charts.git
+[submodule "k8s/trigger-api-charts"]
+	path = k8s/trigger-api-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/trigger-api-charts.git
