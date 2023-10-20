@@ -13,24 +13,17 @@ git submodule init
 git submodule update
 ```
 
-# Production
-To deploy to production, utilise the terraform project in the `./terraform` directory
-
-
 # Development
 
-To deploy the project locally, you will need the following dependencies:
+To deploy locally for development, you will need the following dependencies:
+- Tilt
 - Docker
-- Docker Compose
-- Minikube (running on Docker Engine)
-- Terraform
-- Helm (optional)
-- Telepresence (optional)
+- Minikube (on Docker Engine)
 
 This project only supports local development with minikube running on the docker engine.
 Should you have a different container runtime, we aren't able to guarantee the following setups will work.
 
-### 1. Start Minikube
+### Start Minikube
 
 Make sure your Minikube is started, you can run the following commands to check if your minikube is running
 ```bash
@@ -48,23 +41,36 @@ minikube status
 minikube start
 ```
 
-### 2. Build all required images locally
-
-In this step, we'll be using `docker compose` to build all the required images for our kubernetes deployment.
-
-Head to the root directory of this project, and you will find a `docker-compose.yml` file which will be what we're using to build the images.
-
+### Developing
+To start the project with Tilt, enter the root directory of this project and run the following command
 ```bash
-# build all the containers in the different sub projects
-docker compose build
+# to start development servers
+tilt up
 ```
 
-Take note that in order for minikube to use your images during the ArgoCD Apps Deployment, you will need to let minikube access your local docker registry with the following command:
+After running the commands, images will then be built locally and deployed with helm charts. Tilt will then listen for any changes in the relevant project paths and rebuild them if necessary.
+
+Head to (http://localhost:10350/)[http://localhost:10350/] to see your project's overview and logs. Alternatively, you may also view the logs with the terminal you ran the previous command in by pressing the `s` key.
+
+To stop the project, simply run the following command:
 ```bash
-eval $(minikube -p minikube docker-env)
+# stop the development servers
+tilt down
 ```
 
-### 3. Deploy ArgoCD locally
+
+# Production
+
+To deploy to production, you will need the following dependencies:
+- Google Cloud Account
+- Kubectl
+- Terraform
+- Helm (optional)
+- Telepresence (optional)
+
+To deploy to production, utilise the terraform project in the `./terraform` directory
+
+### Deploy ArgoCD
 
 You will then need to deploy ArgoCD locally with the terraform sub-project located at `./terraform/2.argocd/`
 
@@ -90,7 +96,7 @@ To obtain this password, you can run the following command:
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
-### 4. Deploy ArgoCD Apps
+### Deploy ArgoCD Apps
 
 To deploy the ArgoCD Apps (all the services), you will need to use the terraform sub-project located at `./terraform/3.argoapps/`:
 
