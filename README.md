@@ -1,92 +1,110 @@
-# all-submodules
+# Cob
+Cob is a challenge coding challenge platform for the likes of System Administators
 
-
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/cs302-2023/g3-team8/project/all-submodules.git
-git branch -M main
-git push -uf origin main
+# Quick Start
+To start, simply clone this project along with its submodules with:
+```bash
+git clone --recurse-submodules git@gitlab.com:cs302-2023/g3-team8/project/cob.git 
 ```
 
-## Integrate with your tools
+Alternatively, if you've already clone it without the `--recurse-submodules` flag, you can use the following commands to init them seperately:
+```bash
+git submodule init
+git submodule update
+```
 
-- [ ] [Set up project integrations](https://gitlab.com/cs302-2023/g3-team8/project/all-submodules/-/settings/integrations)
+# Production
+To deploy to production, utilise the terraform project in the `./terraform` directory
 
-## Collaborate with your team
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+# Development
 
-## Test and Deploy
+To deploy the project locally, you will need the following dependencies:
+- Docker
+- Docker Compose
+- Minikube (running on Docker Engine)
+- Terraform
+- Helm (optional)
+- Telepresence (optional)
 
-Use the built-in continuous integration in GitLab.
+This project only supports local development with minikube running on the docker engine.
+Should you have a different container runtime, we aren't able to guarantee the following setups will work.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### 1. Start Minikube
 
-***
+Make sure your Minikube is started, you can run the following commands to check if your minikube is running
+```bash
+# run this command and you should see the following output if you cluster is already started
+minikube status
+# output:
+# minikube
+# type: Control Plane
+# host: Running
+# kubelet: Running
+# apiserver: Running
+# kubeconfig: Configured
 
-# Editing this README
+# should your minikube cluster not be started yet, you can use the following command to start it:
+minikube start
+```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+### 2. Build all required images locally
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+In this step, we'll be using `docker compose` to build all the required images for our kubernetes deployment.
 
-## Name
-Choose a self-explaining name for your project.
+Head to the root directory of this project, and you will find a `docker-compose.yml` file which will be what we're using to build the images.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+```bash
+# build all the containers in the different sub projects
+docker compose build
+```
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Take note that in order for minikube to use your images during the ArgoCD Apps Deployment, you will need to let minikube access your local docker registry with the following command:
+```bash
+eval $(minikube -p minikube docker-env)
+```
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+### 3. Deploy ArgoCD locally
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+You will then need to deploy ArgoCD locally with the terraform sub-project located at `./terraform/2.argocd/`
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+```bash
+# terraform/2.argocd
+terraform apply --auto-approve
+```
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+After deploying ArgoCD onto minikube, you will need to forward ArgoCD's server port in order for the next steps to run.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+You can forward ports by running the following commands:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```bash
+# forward argocd server's port 443 to your localhost port 8080
+kubectl port-forward service/argocd-server -n argocd 8080:443
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+By default, ArgoCD will also generate a default admin password for the `admin` user. Take note that you will need this password in the next step.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+To obtain this password, you can run the following command:
+```bash
+# gets the inital password set - you will need this password in the next step
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+### 4. Deploy ArgoCD Apps
 
-## License
-For open source projects, say how it is licensed.
+To deploy the ArgoCD Apps (all the services), you will need to use the terraform sub-project located at `./terraform/3.argoapps/`:
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Before you can proceed, you will to place the following files in the `./terraform/3.argoapps/` directory:
+> `.env` - Contains all the Environment Variables to pass to all the services
+
+> `challenge-bucket-key.json` - The service account/key to access the GCS Bucket
+
+> `argocd.key` - The deployment key (private key) added to gitlab
+
+
+After you have placed the required files above, you can then run the following command todeploy the services:
+```bash
+# deploy locally
+terraform apply --auto-approve
+```
+

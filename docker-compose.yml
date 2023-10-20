@@ -1,0 +1,46 @@
+version: '3'
+
+# THIS FILE IS MEANT TO BE USED FOR BUILDING OF IMAGES IN DEV ONLY
+# docker compose build OR docker compose build <service>
+services:
+  trigger-api:
+    image: registry.gitlab.com/cs302-2023/g3-team8/project/trigger-api/main
+    build:
+      context: ./trigger-api
+      dockerfile: ./docker/Dockerfile.dev
+  process-engine:
+    image: registry.gitlab.com/cs302-2023/g3-team8/project/process-engine/main
+    build:
+      context: ./process-engine
+      dockerfile: ./docker/Dockerfile.dev
+  platform-frontend:
+    image: registry.gitlab.com/cs302-2023/g3-team8/project/platform-frontend/main
+    build:
+      context: ./platform-frontend
+      dockerfile: ./docker/Dockerfile.dev
+  platform-api:
+    image: registry.gitlab.com/cs302-2023/g3-team8/project/platform-api/main
+    build:
+      context: ./platform-api
+      dockerfile: ./docker/Dockerfile
+  ##notification-service:
+    ##image: registry.gitlab.com/cs302-2023/g3-team8/project/notification-service/main
+    ##build:
+      ##context: ./notification-service
+      ##dockerfile: docker/Dockerfile.dev
+  assignment-service:
+    image: registry.gitlab.com/cs302-2023/g3-team8/project/assignment-service/main
+    build:
+      context: ./assignment-service
+      dockerfile: docker/Dockerfile.dev
+  image-builder-service:
+    image: registry.gitlab.com/cs302-2023/g3-team8/project/image-builder-service/main
+    build:
+      context: ./image-builder-service
+      dockerfile: Dockerfile
+  # takes too long to build :(
+  #challenge-example:
+    #image: registry.gitlab.com/cs302-2023/g3-team8/project/challenge-example/main
+    #build:
+      #context: ./challenge-example
+      #dockerfile: Dockerfile

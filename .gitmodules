@@ -1,0 +1,27 @@
+[submodule "assignment-service"]
+	path = assignment-service
+	url = git@gitlab.com:cs302-2023/g3-team8/project/assignment-service.git
+[submodule "challenge-example"]
+	path = challenge-example
+	url = git@gitlab.com:cs302-2023/g3-team8/project/challenge-example.git
+[submodule "image-builder-service"]
+	path = image-builder-service
+	url = git@gitlab.com:cs302-2023/g3-team8/project/image-builder-service.git
+[submodule "notification-service"]
+	path = notification-service
+	url = git@gitlab.com:cs302-2023/g3-team8/project/notification-service.git
+[submodule "platform-api"]
+	path = platform-api
+	url = git@gitlab.com:cs302-2023/g3-team8/project/platform-api.git
+[submodule "platform-frontend"]
+	path = platform-frontend
+	url = git@gitlab.com:cs302-2023/g3-team8/project/platform-frontend.git
+[submodule "process-engine"]
+	path = process-engine
+	url = git@gitlab.com:cs302-2023/g3-team8/project/process-engine.git
+[submodule "trigger-api"]
+	path = trigger-api
+	url = git@gitlab.com:cs302-2023/g3-team8/project/trigger-api.git
+[submodule "terraform"]
+	path = terraform
+	url = git@gitlab.com:cs302-2023/g3-team8/project/terraform.git
