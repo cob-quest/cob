@@ -1,8 +1,9 @@
 # namespace plugin
-load('ext://namespace', 'namespace_inject')
+load('ext://namespace', 'namespace_inject', 'namespace_create')
 trigger_mode(TRIGGER_MODE_MANUAL)
 
-namespace = "default"
+namespace = "platform"
+
 registry = "registry.gitlab.com/cs302-2023/g3-team8/project"
 modules = [
   {
@@ -26,6 +27,9 @@ modules = [
       "chart_repo": "trigger-api-charts",
   },
 ]
+
+# create the namespace
+namespace_create(namespace)
 
 # deploy secrets first
 k8s_yaml(namespace_inject(read_file("./secrets.yml"), namespace))
