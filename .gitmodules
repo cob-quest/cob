@@ -52,3 +52,6 @@
 [submodule "k8s/trigger-api-charts"]
 	path = k8s/trigger-api-charts
 	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/trigger-api-charts.git
+[submodule "k8s/image-builder-charts"]
+	path = k8s/image-builder-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/image-builder-charts.git

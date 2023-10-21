@@ -26,6 +26,10 @@ modules = [
       "image_repo": "trigger-api",
       "chart_repo": "trigger-api-charts",
   },
+  {
+      "image_repo": "image-builder-service",
+      "chart_repo": "image-builder-charts",
+  },
 ]
 
 # create the namespace
