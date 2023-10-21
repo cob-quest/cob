@@ -1,1 +1,5 @@
 secrets.yml
+
+
+# Ignore DevSpace cache and log folder
+.devspace/

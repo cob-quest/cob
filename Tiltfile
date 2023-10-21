@@ -1,3 +1,8 @@
+# namespace plugin
+load('ext://namespace', 'namespace_inject')
+trigger_mode(TRIGGER_MODE_MANUAL)
+
+namespace = "default"
 registry = "registry.gitlab.com/cs302-2023/g3-team8/project"
 modules = [
   {
@@ -22,16 +27,32 @@ modules = [
   },
 ]
 
-k8s_yaml("./secrets.yml")
-k8s_yaml(helm("./k8s/mongodb-charts/helm/", name="mongodb"), allow_duplicates=True)
-k8s_yaml(helm("./k8s/rabbitmq-charts/helm/", name="rabbitmq"), allow_duplicates=True)
+# deploy secrets first
+k8s_yaml(namespace_inject(read_file("./secrets.yml"), namespace))
 
-# for each module, build and deploy them
+# deploy mongodb and rabbitmq
+k8s_yaml(namespace_inject(helm("./k8s/mongodb-charts/helm/", name="mongodb"), namespace ), allow_duplicates=False)
+k8s_yaml(namespace_inject(helm("./k8s/rabbitmq-charts/helm/", name="rabbitmq"), namespace ), allow_duplicates=False)
+
+# for each module
 for m in modules:
   image_tag = registry + '/' + m["image_repo"] + '/main'
   context = './' + m["image_repo"]
   dockerfile = './' + m["image_repo"] + '/docker/Dockerfile.dev'
   chart = 'k8s/' + m["chart_repo"] + '/helm/'
 
-  docker_build(image_tag, context, dockerfile=dockerfile)
-  k8s_yaml(helm(chart, name=m["image_repo"]), allow_duplicates=True)
+  # build it
+  docker_build(
+  image_tag, 
+  context, 
+  dockerfile=dockerfile,
+  live_update=[
+    sync('./' + m["image_repo"], '/app')
+  ], 
+  extra_tag=["latest"])
+
+  # and deploy it with helm
+  k8s_yaml(namespace_inject(helm(chart, name=m["image_repo"]), namespace), allow_duplicates=False)
+
+# create traefik last
+k8s_yaml(namespace_inject(helm("./k8s/traefik-charts/helm/", name="traefik"), namespace), allow_duplicates=False)
