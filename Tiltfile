@@ -1,6 +1,6 @@
 # namespace plugin
 load('ext://namespace', 'namespace_inject', 'namespace_create')
-#trigger_mode(TRIGGER_MODE_MANUAL)
+trigger_mode(TRIGGER_MODE_MANUAL)
 
 namespace = "platform"
 
@@ -9,26 +9,32 @@ modules = [
   {
       "image_repo": "assignment-service",
       "chart_repo": "assignment-charts",
+      "values":  "values.yaml" ,
   },
   {
       "image_repo": "platform-api",
       "chart_repo": "platform-api-charts",
+      "values":  "values.yaml" ,
   },
   {
       "image_repo": "platform-frontend",
       "chart_repo": "platform-frontend-charts",
+      "values":  "values.yaml" ,
   },
   {
       "image_repo": "process-engine",
       "chart_repo": "process-engine-charts",
+      "values":  "values.yaml" ,
   },
   {
       "image_repo": "trigger-api",
       "chart_repo": "trigger-api-charts",
+      "values":  "values.yaml" ,
   },
   {
       "image_repo": "image-builder-service",
       "chart_repo": "image-builder-charts",
+      "values": "dev.values.yaml",
   },
 ]
 
@@ -48,6 +54,7 @@ for m in modules:
   context = './' + m["image_repo"]
   dockerfile = './' + m["image_repo"] + '/docker/Dockerfile.dev'
   chart = 'k8s/' + m["chart_repo"] + '/helm/'
+  values = chart + m['values']
 
   # build it
   docker_build(
@@ -60,7 +67,7 @@ for m in modules:
   extra_tag=["latest"])
 
   # and deploy it with helm
-  k8s_yaml(namespace_inject(helm(chart, name=m["image_repo"]), namespace), allow_duplicates=False)
+  k8s_yaml(namespace_inject(helm(chart, name=m["image_repo"], values=values), namespace), allow_duplicates=False)
 
 # create traefik last
 k8s_yaml(namespace_inject(helm("./k8s/traefik-charts/helm/", name="traefik"), namespace), allow_duplicates=False)
