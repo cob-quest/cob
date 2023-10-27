@@ -1,6 +1,3 @@
-[submodule "assignment-service"]
-	path = assignment-service
-	url = git@gitlab.com:cs302-2023/g3-team8/project/assignment-service.git
 [submodule "challenge-example"]
 	path = challenge-example
 	url = git@gitlab.com:cs302-2023/g3-team8/project/challenge-example.git
@@ -25,12 +22,6 @@
 [submodule "terraform"]
 	path = terraform
 	url = git@gitlab.com:cs302-2023/g3-team8/project/terraform.git
-[submodule "k8s/assignment-charts"]
-	path = k8s/assignment-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/assignment-charts.git
-[submodule "k8s/challenge-charts"]
-	path = k8s/challenge-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/challenge-charts.git
 [submodule "k8s/mongodb-charts"]
 	path = k8s/mongodb-charts
 	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/mongodb-charts.git
