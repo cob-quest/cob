@@ -7,8 +7,8 @@ namespace = "platform"
 registry = "registry.gitlab.com/cs302-2023/g3-team8/project"
 modules = [
   {
-      "image_repo": "assignment-service",
-      "chart_repo": "assignment-charts",
+      "image_repo": "challenge-service",
+      "chart_repo": "challenge-charts",
       "values":  "values.yaml" ,
   },
   {

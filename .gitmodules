@@ -46,3 +46,12 @@
 [submodule "k8s/image-builder-charts"]
 	path = k8s/image-builder-charts
 	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/image-builder-charts.git
+[submodule "k8s/challenge-creation-charts"]
+	path = k8s/challenge-creation-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/challenge-creation-charts.git
+[submodule "k8s/challenge-charts"]
+	path = k8s/challenge-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/challenge-charts.git
+[submodule "challenge-service"]
+	path = challenge-service
+	url = git@gitlab.com:cs302-2023/g3-team8/project/challenge-service.git
