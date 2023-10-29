@@ -16,9 +16,6 @@
 [submodule "process-engine"]
 	path = process-engine
 	url = git@gitlab.com:cs302-2023/g3-team8/project/process-engine.git
-[submodule "trigger-api"]
-	path = trigger-api
-	url = git@gitlab.com:cs302-2023/g3-team8/project/trigger-api.git
 [submodule "terraform"]
 	path = terraform
 	url = git@gitlab.com:cs302-2023/g3-team8/project/terraform.git
@@ -40,9 +37,6 @@
 [submodule "k8s/traefik-charts"]
 	path = k8s/traefik-charts
 	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/traefik-charts.git
-[submodule "k8s/trigger-api-charts"]
-	path = k8s/trigger-api-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/trigger-api-charts.git
 [submodule "k8s/image-builder-charts"]
 	path = k8s/image-builder-charts
 	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/image-builder-charts.git

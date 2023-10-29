@@ -27,11 +27,6 @@ modules = [
       "values":  "values.yaml" ,
   },
   {
-      "image_repo": "trigger-api",
-      "chart_repo": "trigger-api-charts",
-      "values":  "values.yaml" ,
-  },
-  {
       "image_repo": "image-builder-service",
       "chart_repo": "image-builder-charts",
       "values": "dev.values.yaml",
