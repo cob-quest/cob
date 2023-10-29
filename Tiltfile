@@ -11,11 +11,11 @@ modules = [
       "chart_repo": "challenge-charts",
       "values":  "values.yaml" ,
   },
-  {
-      "image_repo": "platform-api",
-      "chart_repo": "platform-api-charts",
-      "values":  "values.yaml" ,
-  },
+  # {
+  #     "image_repo": "platform-api",
+  #     "chart_repo": "platform-api-charts",
+  #     "values":  "values.yaml" ,
+  # },
   {
       "image_repo": "platform-frontend",
       "chart_repo": "platform-frontend-charts",
@@ -35,9 +35,12 @@ modules = [
 
 # create the namespace
 namespace_create(namespace)
+namespace_create("challenge")
 
 # deploy secrets first
 k8s_yaml(namespace_inject(read_file("./secrets.yml"), namespace))
+k8s_yaml(namespace_inject(read_file("./secrets.yml"), "challenge"))
+
 
 # deploy mongodb and rabbitmq
 k8s_yaml(namespace_inject(helm("./k8s/mongodb-charts/helm/", name="mongodb"), namespace ), allow_duplicates=False)
