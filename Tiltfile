@@ -11,11 +11,11 @@ modules = [
       "chart_repo": "challenge-charts",
       "values":  "values.yaml" ,
   },
-  # {
-  #     "image_repo": "platform-api",
-  #     "chart_repo": "platform-api-charts",
-  #     "values":  "values.yaml" ,
-  # },
+  {
+      "image_repo": "platform-api",
+      "chart_repo": "platform-api-charts",
+      "values":  "values.yaml" ,
+  },
   {
       "image_repo": "platform-frontend",
       "chart_repo": "platform-frontend-charts",
