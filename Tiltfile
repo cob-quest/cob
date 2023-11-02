@@ -9,22 +9,22 @@ modules = [
   {
       "image_repo": "challenge-service",
       "chart_repo": "challenge-charts",
-      "values":  "values.yaml" ,
+      "values":  "dev.values.yaml" ,
   },
   {
       "image_repo": "platform-api",
       "chart_repo": "platform-api-charts",
-      "values":  "values.yaml" ,
+      "values":  "dev.values.yaml" ,
   },
   {
       "image_repo": "platform-frontend",
       "chart_repo": "platform-frontend-charts",
-      "values":  "values.yaml" ,
+      "values":  "dev.values.yaml" ,
   },
   {
       "image_repo": "process-engine",
       "chart_repo": "process-engine-charts",
-      "values":  "values.yaml" ,
+      "values":  "dev.values.yaml" ,
   },
   {
       "image_repo": "image-builder-service",
