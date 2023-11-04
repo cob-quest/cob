@@ -49,3 +49,6 @@
 [submodule "challenge-service"]
 	path = challenge-service
 	url = git@gitlab.com:cs302-2023/g3-team8/project/challenge-service.git
+[submodule "k8s/notification-charts"]
+	path = k8s/notification-charts
+	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/notification-charts.git
