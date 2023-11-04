@@ -31,6 +31,11 @@ modules = [
       "chart_repo": "image-builder-charts",
       "values": "dev.values.yaml",
   },
+  {
+      "image_repo": "notification-service",
+      "chart_repo": "notification-charts",
+      "values": "dev.values.yaml",
+  },
 ]
 
 # create the namespace
