@@ -73,4 +73,4 @@ for m in modules:
   k8s_yaml(namespace_inject(helm(chart, name=m["image_repo"], values=values), namespace), allow_duplicates=False)
 
 # create traefik last
-k8s_yaml(namespace_inject(helm("./k8s/traefik-charts/helm/", name="traefik"), namespace), allow_duplicates=False)
+k8s_yaml(namespace_inject(helm("./k8s/traefik-charts/helm/", name="traefik", values='./k8s/traefik-charts/helm/dev.values.yaml'), namespace), allow_duplicates=False)
