@@ -6,3 +6,5 @@ ports:
 	kubectl port-forward -n platform service/platform-api 8080:8080 &
 	minikube tunnel
 
+secrets:
+	vlt run -c 'envsubst -i secrets.tpl' > secrets.yml
