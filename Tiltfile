@@ -1,6 +1,6 @@
 # namespace plugin
 load('ext://namespace', 'namespace_inject', 'namespace_create')
-trigger_mode(TRIGGER_MODE_MANUAL)
+#trigger_mode(TRIGGER_MODE_MANUAL)
 
 namespace = "platform"
 
