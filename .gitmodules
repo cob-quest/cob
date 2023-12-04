@@ -1,54 +1,54 @@
 [submodule "challenge-example"]
 	path = challenge-example
-	url = git@gitlab.com:cs302-2023/g3-team8/project/challenge-example.git
+	url = git@github.com:cob-quest/challenge-example.git
 [submodule "image-builder-service"]
 	path = image-builder-service
-	url = git@gitlab.com:cs302-2023/g3-team8/project/image-builder-service.git
+	url = git@github.com:cob-quest/image-builder-service.git
 [submodule "notification-service"]
 	path = notification-service
-	url = git@gitlab.com:cs302-2023/g3-team8/project/notification-service.git
+	url = git@github.com:cob-quest/notification-service.git
 [submodule "platform-api"]
 	path = platform-api
-	url = git@gitlab.com:cs302-2023/g3-team8/project/platform-api.git
+	url = git@github.com:cob-quest/platform-api.git
 [submodule "platform-frontend"]
 	path = platform-frontend
-	url = git@gitlab.com:cs302-2023/g3-team8/project/platform-frontend.git
+	url = git@github.com:cob-quest/platform-frontend.git
 [submodule "process-engine"]
 	path = process-engine
-	url = git@gitlab.com:cs302-2023/g3-team8/project/process-engine.git
+	url = git@github.com:cob-quest/process-engine.git
 [submodule "terraform"]
 	path = terraform
-	url = git@gitlab.com:cs302-2023/g3-team8/project/terraform.git
+	url = git@github.com:cob-quest/terraform.git
 [submodule "k8s/mongodb-charts"]
 	path = k8s/mongodb-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/mongodb-charts.git
+	url = git@github.com:cob-quest/mongodb-charts.git
 [submodule "k8s/platform-api-charts"]
 	path = k8s/platform-api-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/platform-api-charts.git
+	url = git@github.com:cob-quest/platform-api-charts.git
 [submodule "k8s/platform-frontend-charts"]
 	path = k8s/platform-frontend-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/platform-frontend-charts.git
+	url = git@github.com:cob-quest/platform-frontend-charts.git
 [submodule "k8s/process-engine-charts"]
 	path = k8s/process-engine-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/process-engine-charts.git
+	url = git@github.com:cob-quest/process-engine-charts.git
 [submodule "k8s/rabbitmq-charts"]
 	path = k8s/rabbitmq-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/rabbitmq-charts.git
+	url = git@github.com:cob-quest/rabbitmq-charts.git
 [submodule "k8s/traefik-charts"]
 	path = k8s/traefik-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/traefik-charts.git
+	url = git@github.com:cob-quest/traefik-charts.git
 [submodule "k8s/image-builder-charts"]
 	path = k8s/image-builder-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/image-builder-charts.git
+	url = git@github.com:cob-quest/image-builder-charts.git
 [submodule "k8s/challenge-creation-charts"]
 	path = k8s/challenge-creation-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/challenge-creation-charts.git
+	url = git@github.com:cob-quest/challenge-creation-charts.git
 [submodule "k8s/challenge-charts"]
 	path = k8s/challenge-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/challenge-charts.git
+	url = git@github.com:cob-quest/challenge-charts.git
 [submodule "challenge-service"]
 	path = challenge-service
-	url = git@gitlab.com:cs302-2023/g3-team8/project/challenge-service.git
+	url = git@github.com:cob-quest/challenge-service.git
 [submodule "k8s/notification-charts"]
 	path = k8s/notification-charts
-	url = git@gitlab.com:cs302-2023/g3-team8/project/k8s/notification-charts.git
+	url = git@github.com:cob-quest/notification-charts.git
