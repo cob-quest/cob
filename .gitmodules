@@ -52,3 +52,6 @@
 [submodule "k8s/notification-charts"]
 	path = k8s/notification-charts
 	url = git@github.com:cob-quest/notification-charts.git
+[submodule "architecture-diagram"]
+	path = architecture-diagram
+	url = ./architecture-diagram
