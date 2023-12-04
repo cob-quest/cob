@@ -54,4 +54,4 @@
 	url = git@github.com:cob-quest/notification-charts.git
 [submodule "architecture-diagram"]
 	path = architecture-diagram
-	url = ./architecture-diagram
+	url = git@github.com:cob-quest/architecture-diagram.git
