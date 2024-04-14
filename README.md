@@ -12,6 +12,8 @@ Alternatively, if you've already clone it without the `--recurse-submodules` fla
 git submodule init
 git submodule update
 ```
+## Solution Architecture
+![](docs/architecture.png)
 
 # Development
 
