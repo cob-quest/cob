@@ -14,7 +14,7 @@ git submodule update
 ```
 ## Solution Architecture
 ![](docs/architecture.png)
-
+ 
 # Development
 
 To deploy locally for development, you will need the following dependencies:
